@@ -22,15 +22,32 @@ function delete_taikhoan($id){
     pdo_query($sql);
 }
 function validate_taikhoan($user, $email, $address, $tel, $pass) {
-    // Kiểm tra xem đã nhập đủ thông tin hay không
-    if (empty($user) || empty($email) || empty($address) || empty($tel) || empty($pass)) {
-        return 'Vui lòng điền đầy đủ thông tin.';
+    // Kiểm tra các điều kiện validate
+    if (empty($user) || empty($email) || empty($pass) || empty($tel) || empty($address)) {
+        return "Vui lòng điền đầy đủ thông tin.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return "Email không hợp lệ.";
     }
 
-    // Các kiểm tra hợp lệ khác có thể được thêm vào tại đây
-    // Ví dụ: Kiểm tra định dạng email, độ dài mật khẩu, ...
+    // Kiểm tra độ dài mật khẩu
+    $password_error = validate_password_length($pass);
+    if ($password_error !== null) {
+        return $password_error;
+    }
 
-    // Nếu không có lỗi, trả về null
-    return null;
+    return null; // Trả về null nếu không có lỗi
+};
+function validate_password_length($password) {
+    // Độ dài tối thiểu cho mật khẩu
+    $minLength = 8;
+
+    // Kiểm tra xem mật khẩu có đủ độ dài hay không
+    if (strlen($password) < $minLength) {
+        return "Mật khẩu phải có ít nhất $minLength ký tự.";
+    }
+
+    // Các kiểm tra khác nếu cần
+
+    return null; // Trả về null nếu không có lỗi
 }
 ?>

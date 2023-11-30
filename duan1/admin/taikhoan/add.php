@@ -1,6 +1,6 @@
        
      <form action="index.php?act=addtk" method="post"  enctype="multipart/form-data">
-    <div class="title"><h2 style="text-align: center;"> QUẢN LÍ DANH MỤC</h2></div>
+    <div class="title"><h2 style="text-align: center;"> QUẢN LÍ KHÁCH HÀNG</h2></div>
     <div class="mb-3">
         <input name="user" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
     </div>

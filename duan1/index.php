@@ -26,28 +26,31 @@ if ((isset($_GET['act']))&&($_GET['act'])) {
         case 'gt':
             include "view/gt.php";
             break;
-           case 'dangky':
-    if (isset($_POST['dangki']) && ($_POST['dangki'])) {
-        // Lấy giá trị từ form
-        $user = isset($_POST['user']) ? $_POST['user'] : '';
-        $email = isset($_POST['email']) ? $_POST['email'] : '';
-        $pass = isset($_POST['pass']) ? $_POST['pass'] : '';
-        $tel = isset($_POST['tel']) ? $_POST['tel'] : '';
-        $address = isset($_POST['address']) ? $_POST['address'] : '';
-
-        // Kiểm tra các điều kiện validate
-        if (empty($user) || empty($email) || empty($pass) || empty($tel) || empty($address)) {
-            $thongbao = "Vui lòng điền đầy đủ thông tin.";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $thongbao = "Email không hợp lệ.";
-        } else {
-            // Thực hiện đăng ký nếu thông tin hợp lệ
-            insert_taikhoan($user, $pass, $email, $address, $tel);
-            $thongbao = "Đăng ký thành công";
-        }
-    }
-    include "view/taikhoan/dangki.php";
-    break;
+            case 'dangky':
+                if (isset($_POST['dangki']) && ($_POST['dangki'])) {
+                    // Lấy giá trị từ form
+                    $user = isset($_POST['user']) ? $_POST['user'] : '';
+                    $email = isset($_POST['email']) ? $_POST['email'] : '';
+                    $pass = isset($_POST['pass']) ? $_POST['pass'] : '';
+                    $tel = isset($_POST['tel']) ? $_POST['tel'] : '';
+                    $address = isset($_POST['address']) ? $_POST['address'] : '';
+            
+                    // Kiểm tra các điều kiện validate
+                    if (empty($user) || empty($email) || empty($pass) || empty($tel) || empty($address)) {
+                        $thongbao = "Vui lòng điền đầy đủ thông tin.";
+                    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $thongbao = "Email không hợp lệ.";
+                    } elseif (strlen($pass) < 8) {
+                        $thongbao = "Mật khẩu phải có ít nhất 8 ký tự.";
+                    } else {
+                        // Thực hiện đăng ký nếu thông tin hợp lệ
+                        insert_taikhoan($user, $pass, $email, $address, $tel);
+                        $thongbao = "Đăng ký thành công";
+                    }
+                }
+                include "view/taikhoan/dangki.php";
+                break;
+            
 
     case 'dangnhap':
         if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {

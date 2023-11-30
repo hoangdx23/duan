@@ -46,10 +46,10 @@ if(isset( $_GET['act'])){
                         $address = isset($_POST['address']) ? $_POST['address'] : '';
                         $tel = isset($_POST['tel']) ? $_POST['tel'] : '';
                         $pass = isset($_POST['pass']) ? $_POST['pass'] : '';
-                
+            
                         // Kiểm tra hợp lệ
                         $error_message = validate_taikhoan($user, $email, $address, $tel, $pass);
-                
+            
                         if ($error_message === null) {
                             // Nếu không có lỗi, thực hiện thêm mới
                             insert_taikhoan($user, $pass, $email, $address, $tel);
@@ -59,7 +59,7 @@ if(isset( $_GET['act'])){
                             $thongbao = $error_message;
                         }
                     }
-                
+            
                     include "taikhoan/add.php";
                     break;
                     case 'adddm':
