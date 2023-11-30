@@ -21,4 +21,16 @@ function delete_taikhoan($id){
     $sql="delete from user where id=".$id;
     pdo_query($sql);
 }
+function validate_taikhoan($user, $email, $address, $tel, $pass) {
+    // Kiểm tra xem đã nhập đủ thông tin hay không
+    if (empty($user) || empty($email) || empty($address) || empty($tel) || empty($pass)) {
+        return 'Vui lòng điền đầy đủ thông tin.';
+    }
+
+    // Các kiểm tra hợp lệ khác có thể được thêm vào tại đây
+    // Ví dụ: Kiểm tra định dạng email, độ dài mật khẩu, ...
+
+    // Nếu không có lỗi, trả về null
+    return null;
+}
 ?>

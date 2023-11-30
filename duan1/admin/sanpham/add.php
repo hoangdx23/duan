@@ -1,6 +1,6 @@
        
       <form action="index.php?act=addsp" method="post"  enctype="multipart/form-data">
-       <div class="title" ><h2 style="text-align: center;"> QUẢN LÍ DANH MỤC</h2></div>
+       <div class="title" ><h2 style="text-align: center;"> QUẢN LÍ SẢN PHẨM</h2></div>
   <div class="mb-3">
   <select name="iddm" class="form-select" aria-label="Default select example">
                 <?php

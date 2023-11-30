@@ -250,6 +250,10 @@ if ((isset($_GET['act']))&&($_GET['act'])) {
                     case 'hoadon':
                         include "view/hoadon.php";
                         break;
+                        case 'mybill':
+                            $mybill=loadall_mybill($_SESSION['user']['id']);
+                            include "view/mybill.php";
+                            break;
         default:
             include "view/home.php";
             break;

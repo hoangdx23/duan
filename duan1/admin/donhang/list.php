@@ -1,6 +1,6 @@
 
 <div class="table" >
-        <div class="title" ><h2 style="text-align: center;"> QUẢN LÍ SẢN PHẨM</h2></div>
+        <div class="title" ><h2 style="text-align: center;"> QUẢN LÍ ĐƠN HÀNG</h2></div>
         <!--
         search input 
 

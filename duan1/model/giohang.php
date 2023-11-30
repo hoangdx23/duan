@@ -83,4 +83,13 @@ function get_ttdh($n){
     }
     return $tt;
 }
+function update_donhang($id,$name,$email,$tel,$address,$status){
+    $sql="update donhang set bill_name='".$name."',bill_email='".$email."',bill_tel='".$tel."',bill_address='".$address."',bill_status='".$status."' where id=".$id;
+    pdo_execute($sql);
+}
+function loadall_mybill($iduser){
+    $sql="select * from donhang where iduser=".$iduser;
+    $mybill=pdo_query($sql);
+    return $mybill ;
+}
 ?>

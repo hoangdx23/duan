@@ -42,6 +42,16 @@ function loadall_sanpham_home(){
         else  $sql="update  sanpham set  names='".$tensp."',price='".$giasp."',mota='".$mota."' where id=".$id;
         pdo_execute($sql);
     }
-    
-    
+function validate_sanpham($iddm, $tensp, $giasp, $mota, $hinh) {
+    // Kiểm tra xem đã nhập đủ thông tin hay không
+    if (empty($iddm) || empty($tensp) || empty($giasp) || empty($mota) || empty($hinh)) {
+        return 'Vui lòng điền đầy đủ thông tin.';
+    }
+
+    // Các kiểm tra hợp lệ khác có thể được thêm vào tại đây
+    // Ví dụ: Kiểm tra giá sản phẩm là số dương, mô tả không quá dài, ...
+
+    // Nếu không có lỗi, trả về null
+    return null;
+}
 ?>
