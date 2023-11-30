@@ -11,6 +11,7 @@
             <thead>
               <tr>
                 <th scope="col">Mã đơn hàng</th>
+                <th scope="col">Người đặt</th>
                 <th scope="col">Ngày đặt</th>
                 <th scope="col">Số lượng mặt hàng</th>
                 <th scope="col">Tổng giá trị đơn hàng</th>
@@ -28,6 +29,7 @@
                     <tbody>
                         <tr>
                             <td>H2T-'.$id.'</td>
+                            <td>'.$bill_name.'</td>
                             <td>'.$ngaydathang.'</td>
                             <td>'.$countsp.'</td>
                             <td>'.$total.'</td>

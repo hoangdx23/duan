@@ -209,54 +209,68 @@ if ((isset($_GET['act']))&&($_GET['act'])) {
                 case 'bill':
                     include 'view/thanhtoan.php';
                     break;
-                case 'billconfirm':
-                    //tạo bill
-                    if (isset($_POST['dongydathang'])&&($_POST['dongydathang'])){
-                        if(isset($_SESSION['user'])) $iduser=$_SESSION['user']['id'];
-                        else $id=0;
-                        $name=$_POST['name'];
-                        $email=$_POST['email'];
-                        $address=$_POST['address'];
-                        $tel=$_POST['tel'];
-                        $ngaydathang=date('h:i:sa d/m/Y');
-                        $tongdonhang=tongdonhang();
+                    case 'billconfirm':
+                        //tạo bill
+                        if (isset($_POST['dongydathang'])&&($_POST['dongydathang'])){
+                            if(isset($_SESSION['user'])) $iduser=$_SESSION['user']['id'];
+                            else $iduser=0;
+                            $name=$_POST['name'];
+                            $email=$_POST['email'];
+                            $address=$_POST['address'];
+                            $tel=$_POST['tel'];
+                            $ngaydathang=date('h:i:sa d/m/Y');
+                            $tongdonhang=tongdonhang();
+    
+                            $bankname=$_POST['bankname'];
+                            $bankuser=$_POST['bankuser'];
+                            $banknumber=$_POST['banknum'];
+                            $bankimage=$_FILES['bankimage']['name'];
+                            $target_dir = "upload/";
+                            $target_file = $target_dir . basename($_FILES["bankimage"]["name"]);
+                            if (empty($name) || empty($email) || empty($address) || empty($tel) || empty($bankname) || empty($bankuser) || empty($banknumber) || empty($bankimage)) {
+                                $thongbao = "Vui lòng điền đầy đủ thông tin.";
+                                include "view/thanhtoan.php";
+                            }else{
+                            if (move_uploaded_file($_FILES["bankimage"]["tmp_name"], $target_file)) {
+                                // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                              } else {
+                                // echo "Sorry, there was an error uploading your file.";
+                              };
+                              $idbill= insert_bill($iduser,$name,$email,$address,$tel,$ngaydathang,$tongdonhang,$bankname,$bankuser,$banknumber,$bankimage);
 
-                        $bankname=$_POST['bankname'];
-                        $bankuser=$_POST['bankuser'];
-                        $banknumber=$_POST['banknum'];
-                        $bankimage=$_FILES['bankimage']['name'];
-                        $target_dir = "upload/";
-                        $target_file = $target_dir . basename($_FILES["bankimage"]["name"]);
-                        if (move_uploaded_file($_FILES["bankimage"]["tmp_name"], $target_file)) {
-                            // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-                          } else {
-                            // echo "Sorry, there was an error uploading your file.";
-                          };
-                        
-                          $idbill= insert_bill($iduser,$name,$email,$address,$tel,$ngaydathang,$tongdonhang,$bankname,$bankuser,$banknumber,$bankimage);
-
-                          //insert into cart $session['cart'] & idbill
-
-                          foreach($_SESSION['cart'] as $cart){
-                            insert_cart($_SESSION['user']['id'],$cart['id'],$cart['img'],$cart['names'],$cart['price'],$cart['soluongmua'],$cart['price']*$cart['soluongmua'],$idbill);
-                          };
-
-                          //xóa session
-                          $_SESSION['cart']=[];
-
-                    }
-                    $bill=loadone_bill($idbill);
-                    $listbill=loadone_cart($idbill);
-                    include "view/hoadon.php";
-                    break;
-
+                              //insert into cart $session['cart'] & idbill
+                              if (isset($_SESSION['user'])){
+                              foreach($_SESSION['cart'] as $cart){
+                                insert_cart($_SESSION['user']['id'],$cart['id'],$cart['img'],$cart['names'],$cart['price'],$cart['soluongmua'],$cart['price']*$cart['soluongmua'],$idbill);
+                              }
+                            }else{
+                                foreach($_SESSION['cart'] as $cart){
+                                    insert_cart(0,$cart['id'],$cart['img'],$cart['names'],$cart['price'],$cart['soluongmua'],$cart['price']*$cart['soluongmua'],$idbill);
+                                  }
+                              };
+    
+                              //xóa session
+                              $_SESSION['cart']=[];
+                              $bill=loadone_bill($idbill);
+                              $listbill=loadone_cart($idbill);
+                              include "view/hoadon.php";
+                            };
+                            
+                        }
+    
+    
+                        break;
                     case 'hoadon':
                         include "view/hoadon.php";
                         break;
                         case 'mybill':
+                            if (isset($_SESSION['user'])){
                             $mybill=loadall_mybill($_SESSION['user']['id']);
+                            }else{
+                                $mybill=loadall_mybill(0);
+                            }
                             include "view/mybill.php";
-                            break;
+                            break;  
         default:
             include "view/home.php";
             break;

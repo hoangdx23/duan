@@ -26,13 +26,14 @@
                                 </thead>
                                 <?php
                                 if (isset($_SESSION["cart"])) {
-                                    echo count($_SESSION["cart"]);
+                                    echo count($_SESSION["cart"])." sản phẩm";
                                 } else {
-                                    echo "0";
+                                    echo "0 sản phẩm";
                                 }
                                 ?>
                                 <?php
                                     if (isset($_SESSION["cart"])) {
+                                        if (count($_SESSION["cart"])!=0){
                                         foreach ($_SESSION["cart"] as $item) {
                                             extract($item);
                                             ?>
@@ -59,7 +60,7 @@
                                             <span class="price">£<?php echo $item['price']; ?></span>
                                         </td>
                                     </tr>
-                                    <?php } } ?>
+                                    <?php }  ?>
 
 
 
@@ -69,6 +70,13 @@
                                             <a href="index.php?act=bill" class="btn-theme btn-flat">Continue Shopping</a>
                                         </td>
                                     </tr>
+                                    <?php }else{?>
+                                        <tr class="actions">
+                                        <td class="border-0" colspan="6">
+                                            <a href="index.php" class="btn-theme btn-flat">View Product</a>
+                                        </td>
+                                    </tr>
+                                    <?php }  }?>
                                 </tbody>
                             </table>
                         </form>
