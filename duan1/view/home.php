@@ -1,3 +1,39 @@
+</div>
+</div>
+  <img src="https://theme.hstatic.net/1000306633/1000891824/14/slideshow_1.jpg?v=587" alt="" style=""/>
+  <div class="banner" >
+    <div class="hinh"> 
+        <img src="https://theme.hstatic.net/1000306633/1000891824/14/block_home_category1_new.png?v=587" alt="" /></div>
+    <div class="hinh"> <img src="https://theme.hstatic.net/1000306633/1000891824/14/block_home_category2_new.png?v=587" alt="" /></div>
+    <div class="hinh"> <img src="https://theme.hstatic.net/1000306633/1000891824/14/block_home_category3_new.png?v=587" alt="" /></div>
+  </div>
+  <div class="typewriter">
+  <h1 id="text">STREETWEAR BRAND LIMITED</h1>
+  </div>
+  <form action="index.php?act=sanpham" method="post">
+        <div class="container mt-4">
+          <div class="row">
+            <div class="col-md-4 custom-margin">
+              <!-- Ô nhập dữ liệu (input) chiếm toàn bộ chiều rộng của container -->
+              <input name="kyw" type="search" class="form-control" placeholder="Search...">
+            </div>
+            <div class="col-md-4 custom-margin">
+              <select name="iddm" class="form-select" aria-label="Default select example">
+                <option value="0" selected>Open this select menu</option>
+                <?php
+                    foreach ($listdm as $danhmuc) {
+                        extract($danhmuc);
+                        echo'<option value="'.$id.'">'.$name.'</option>';
+                    }
+                    ?>    
+              </select>
+            </div>
+            <div class="col-md-4 custom-margin">
+              <input type="submit" name="listok" value="Search" class="btn btn-primary">
+            </div>
+          </div>
+        </div>
+      </form>
 <div class="nd">
              <?php
     $i=0;

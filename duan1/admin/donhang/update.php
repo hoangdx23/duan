@@ -8,7 +8,7 @@
        <div class="title" ><h2 style="text-align: center;"> QUẢN LÍ ĐƠN HÀNG</h2></div>
   <div class="mb-3">
   <label for="disabledTextInput" class="form-label">Mã đơn hàng</label>
-      <input name="maloai"  type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+      <input name="maloai"  type="text" id="disabledTextInput" class="form-control" value="<?php if(isset($id)&&($id!="")) echo "H2T-".$id;?>" disabled>
   </div>
   <div class="mb-3">
   <label for="disabledTextInput" class="form-label">Tên Người Nhận</label>
@@ -25,6 +25,20 @@
   <div class="mb-3">
   <label for="disabledTextInput" class="form-label">Số điện thoại</label>
   <input name="billtel" value="<?php if(isset($bill_tel)&&($bill_tel!="")) echo $bill_tel;?>" type="text" class="form-control" placeholder="Số điện thoại" aria-label="Username" aria-describedby="addon-wrapping">
+  </div>
+
+
+  <div class="mb-3">
+  <label for="disabledTextInput" class="form-label">Tên Ngân hàng</label>
+  <input name="bankname" value="<?php if(isset($bank_name)&&($bank_name!="")) echo $bank_name;?>" type="text" disabled class="form-control" placeholder="Bank name" aria-label="Username" aria-describedby="addon-wrapping">
+  </div>
+  <div class="mb-3">
+  <label for="disabledTextInput" class="form-label">Tên tài khoản</label>
+  <input name="bankuser" value="<?php if(isset($bank_user)&&($bank_user!="")) echo $bank_user;?>" type="text" disabled class="form-control" placeholder="Bank user" aria-label="Username" aria-describedby="addon-wrapping">
+  </div>
+  <div class="mb-3">
+  <label for="disabledTextInput" class="form-label">Số tài khoản</label>
+  <input name="banknumber" value="<?php if(isset($bank_number)&&($bank_number!="")) echo $bank_number;?>" disabled type="text" class="form-control" placeholder="Bank number" aria-label="Username" aria-describedby="addon-wrapping">
   </div>
   <div class="mb-3">
   <label for="disabledTextInput" class="form-label">Ảnh bill</label> <br/>

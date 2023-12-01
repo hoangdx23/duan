@@ -25,6 +25,7 @@
             <div class="col-md-4 custom-margin">
               <input type="submit" name="listok" value="Search" class="btn btn-primary">
             </div>
+ 
           </div>
         </div>
       </form>
@@ -39,7 +40,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Gía</th>
                 <th scope="col">Hình</th>
-                <th scope="col">Lượt xem</th>
+                <th scope="col">số lượng</th>
                 <th scope="col">Hành động</th>
               </tr>
             </thead>
@@ -60,7 +61,7 @@
                             <td>'.$names.' </td>
                             <td>'.$price.' </td>
                             <td>'.$img.' </td>
-                            <td>'.$luotxem	.' </td>
+                            <td>'.$luotxem.' </td>
                             <td> 
                             <a href="'.$xoasp.'"><button type="button" class="btn btn-danger">Delete</button></a>
                             <a href="'.$suasp.'"><button type="button" class="btn btn-success">Edit</button></a></td>

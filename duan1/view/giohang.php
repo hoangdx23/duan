@@ -56,6 +56,9 @@
                                         <td class="product-price">
                                             <span class="price"><?php echo $item['soluongmua']; ?></span>
                                         </td>
+                                        <!-- <td class="product-price">
+                                            <span class="price"><?php echo $item['luotxem']; ?></span>
+                                        </td> -->
                                         <td class="product-subtotal">
                                             <span class="price">£<?php echo $item['price']; ?></span>
                                         </td>

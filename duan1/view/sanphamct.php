@@ -8,14 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/home.css">
-
-
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <link href="assets/css/spct.css" rel="stylesheet" />
- 
-    
 </head>
 <body>
   <div class="container">
@@ -51,6 +47,9 @@
                     <div class="prices">
                       <span class="price">'.$price.'</span>
                     </div>
+                    <div class="prices">Số lượng:
+                    <span class="price">'.$luotxem.'</span>
+                  </div>
                     <p>'.$mota.'</p>
                     <div class="product-quick-action">
                       <a class="btn-theme" href="index.php?act=themgiohang&&id='.$id.'">Thêm vào giỏ hàng</a>

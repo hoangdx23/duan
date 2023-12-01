@@ -39,6 +39,57 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.12.0/mdb.min.css" integrity="sha512-JhSBC+2/BBQPhd7+V9iDuhI5BH1U/paTTwKgKlP+vo5TJ6Y8WlP/xMXXpuvXkq59Y3oK6a5JJ5H9MCjn1Q8jAA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <style>
+      /* body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: inline-block;
+    position: relative;
+}
+
+.menu a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu li:hover {
+    background-color: #555;
+} */
+
+.submenu {
+    position: relative;
+}
+
+.submenu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.submenu:hover ul {
+    display: block;
+}
+
+.submenu ul li {
+    display: block;
+}
+
+  </style>
   <div class="menu-container">
     <ul class="menu">
     
@@ -56,10 +107,17 @@
           extract($_SESSION['user']);
           ?>
         <li><a href="">Xin chào <?=$user?></a></li>
-        <li><a href="index.php?act=thoat">THOÁT</a></li>
-        <li><a href="index.php?act=giohang">GIỎ HÀNG </a></li>
-        <li><a href="index.php?act=edittk">TÀI KHOẢN </a></li>
-        <li><a href="index.php?act=mybill">HÓA ĐƠN </a></li>
+        <li class="submenu">
+                <a href="#">thông tin</a>
+                <ul>
+                <li><a href="index.php?act=mybill">HÓA ĐƠN </a></li>
+                <li><a href="index.php?act=edittk">TÀI KHOẢN </a></li>
+                <li><a href="index.php?act=giohang">GIỎ HÀNG </a></li>
+
+                <li><a href="index.php?act=thoat">THOÁT</a></li>
+                </ul>
+            </li>
+            <li></li>
         <?php 
         if ($role==1) {
         ?>
@@ -72,17 +130,8 @@
       <li><a href="index.php?act=dangky">ĐĂNG KÍ</a></li>
       <li><a href="index.php?act=giohang">GIỎ HÀNG </a></li>
       <li><a href="index.php?act=mybill">HÓA ĐƠN </a></li>
+      <li><input type="text" value="timkiem"></li>
       <?php }?>
     </div>
     </ul>
-  </div>
-  <img src="https://theme.hstatic.net/1000306633/1000891824/14/slideshow_1.jpg?v=587" alt="" style=""/>
-  <div class="banner" >
-    <div class="hinh"> 
-        <img src="https://theme.hstatic.net/1000306633/1000891824/14/block_home_category1_new.png?v=587" alt="" /></div>
-    <div class="hinh"> <img src="https://theme.hstatic.net/1000306633/1000891824/14/block_home_category2_new.png?v=587" alt="" /></div>
-    <div class="hinh"> <img src="https://theme.hstatic.net/1000306633/1000891824/14/block_home_category3_new.png?v=587" alt="" /></div>
-  </div>
-  <div class="typewriter">
-  <h1 id="text">STREETWEAR BRAND LIMITED</h1>
   </div>

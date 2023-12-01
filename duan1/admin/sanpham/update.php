@@ -19,6 +19,9 @@
   <input value="<?=$price?>" name="giasp" type="text" class="form-control" placeholder="Price" aria-label="Username" aria-describedby="addon-wrapping">
   </div>
   <div class="mb-3">
+  <input value="<?=$luotxem?>" name="luotxem" type="text" class="form-control" placeholder="Quatity" aria-label="Username" aria-describedby="addon-wrapping">
+  </div>
+  <div class="mb-3">
   <input value="<?=$img?>" name="hinh" type="file" class="form-control" placeholder="Image" aria-label="Username" aria-describedby="addon-wrapping">
   <?=$img?>  
 </div>

@@ -14,7 +14,6 @@ function tongdonhang(){
     }
     return $tong;
 }
-
 function insert_bill($iduser,$name,$email,$address,$tel,$ngaydathang,$tongdonhang,$bankname,$bankuser,$banknumber,$bankimage){
     $sql="insert into donhang(iduser,bill_name,bill_email,bill_address,bill_tel,ngaydathang,total,bank_name,bank_user,bank_number,bank_img)
     values('$iduser','$name','$email','$address','$tel','$ngaydathang','$tongdonhang','$bankname','$bankuser','$banknumber','$bankimage') ";
@@ -59,7 +58,6 @@ function delete_bill($id){
     pdo_query($sql);
     pdo_query($sql2);
 }
-
 function get_ttdh($n){
     switch ($n){
         case '0':
@@ -89,6 +87,11 @@ function update_donhang($id,$name,$email,$tel,$address,$status){
 }
 function loadall_mybill($iduser){
     $sql="select * from donhang where iduser=".$iduser;
+    $mybill=pdo_query($sql);
+    return $mybill ;
+}
+function loadall_ktbill(){
+    $sql="select * from donhang where bill_status='1' order by id desc";
     $mybill=pdo_query($sql);
     return $mybill ;
 }

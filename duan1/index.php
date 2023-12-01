@@ -271,7 +271,10 @@ if ((isset($_GET['act']))&&($_GET['act'])) {
                             }
                             include "view/mybill.php";
                             break;  
+                            
         default:
+
+
             include "view/home.php";
             break;
     }

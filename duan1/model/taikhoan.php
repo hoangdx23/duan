@@ -17,9 +17,14 @@ function loadall_taikhoan(){
             $listdm = pdo_query($sql);
             return $listdm;
 }
-function delete_taikhoan($id){
-    $sql="delete from user where id=".$id;
-    pdo_query($sql);
+function lock_taikhoan($id) {
+    $sql = "UPDATE user SET is_locked = true WHERE id = ?";
+    pdo_execute($sql, $id);
+}
+
+function unlock_taikhoan($id) {
+    $sql = "UPDATE user SET is_locked = false WHERE id = ?";
+    pdo_execute($sql, $id);
 }
 function validate_taikhoan($user, $email, $address, $tel, $pass) {
     // Kiểm tra các điều kiện validate
@@ -40,14 +45,11 @@ function validate_taikhoan($user, $email, $address, $tel, $pass) {
 function validate_password_length($password) {
     // Độ dài tối thiểu cho mật khẩu
     $minLength = 8;
-
     // Kiểm tra xem mật khẩu có đủ độ dài hay không
     if (strlen($password) < $minLength) {
         return "Mật khẩu phải có ít nhất $minLength ký tự.";
     }
-
     // Các kiểm tra khác nếu cần
-
     return null; // Trả về null nếu không có lỗi
 }
 ?>

@@ -14,13 +14,22 @@ if(isset( $_GET['act'])){
             $listtk= loadall_taikhoan();
             include "taikhoan/list.php";
             break;  
-            case 'xoatk':
-                if(isset($_GET['id'])&& ($_GET['id']>0)){
-                    delete_taikhoan($_GET['id']);
+            case 'lock':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    lock_taikhoan($_GET['id']);
                 }
-                $listtk= loadall_taikhoan();
+                $listtk = loadall_taikhoan();
                 include "taikhoan/list.php";
-                break; 
+                break;
+        
+            case 'unlock':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    unlock_taikhoan($_GET['id']);
+                }
+                $listtk = loadall_taikhoan();
+                include "taikhoan/list.php";
+                break;
+             
                 // case 'adduser':
                 //     if (isset($_POST['addtk']) && ($_POST['addtk'] )) {
                 //         $user=$_POST['user'];
@@ -115,16 +124,16 @@ if(isset( $_GET['act'])){
                                 $iddm = isset($_POST['iddm']) ? $_POST['iddm'] : '';
                                 $tensp = isset($_POST['tensp']) ? $_POST['tensp'] : '';
                                 $giasp = isset($_POST['giasp']) ? $_POST['giasp'] : '';
+                                $luotxem = isset($_POST['luotxem']) ? $_POST['luotxem'] : '';
                                 $mota = isset($_POST['mota']) ? $_POST['mota'] : '';
                                 $hinh = isset($_FILES['hinh']['name']) ? $_FILES['hinh']['name'] : '';
-                                $error_message = validate_sanpham($iddm, $tensp, $giasp, $mota, $hinh);
-                    
+                                $error_message = validate_sanpham($iddm, $tensp, $giasp, $mota, $hinh,$luotxem);
                                 if ($error_message === null) {
                                     $target_dir = "../upload/";
                                     $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
                     
                                     if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                                        insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm);
+                                        insert_sanpham($tensp, $giasp,$luotxem,$hinh, $mota, $iddm);
                                         $thongbao = 'Nhập Thành Công';
                                     } else {
                                         $thongbao = 'Có lỗi khi tải lên hình ảnh.';
@@ -173,6 +182,7 @@ if(isset( $_GET['act'])){
                                                 $tensp=$_POST['tensp'];
                                                 $giasp=$_POST['giasp'];
                                                 $mota=$_POST['mota'];
+                                                $luotxem=$_POST['luotxem'];
                                                 $hinh=$_FILES['hinh']['name'];
                                                 $target_dir = "../upload/";
                                                 $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
@@ -182,7 +192,7 @@ if(isset( $_GET['act'])){
                                                     // echo "Sorry, there was an error uploading your file.";
                                                     
                                                   }
-                                              update_sanpham($id,$tensp,$giasp,$hinh,$mota);
+                                              update_sanpham($id,$tensp,$giasp,$luotxem,$hinh,$mota);
                                                  $thongbao=" Cập Nhật Thành Công";
                                             }
                                             $listdm= loadall_danhmuc();
@@ -229,7 +239,10 @@ if(isset( $_GET['act'])){
                             $listbill= loadall_bill("",0);
                             include "donhang/list.php";
                             break;
-                        
+                            case 'listkt': 
+                                $listbill=loadall_ktbill();
+                                include "donhang/listkt.php";
+                                break;
                 default:
                 include "home.php";
                 break;

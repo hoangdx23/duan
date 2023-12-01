@@ -1,6 +1,6 @@
 <?php
-function insert_sanpham($tensp,$giasp,$hinh,$mota,$iddm){
-    $sql="insert into sanpham (names,price,img,mota,iddanhmuc) values('$tensp','$giasp','$hinh','$mota','$iddm')";
+function insert_sanpham($tensp,$giasp,$luotxem,$hinh,$mota,$iddm){
+    $sql="insert into sanpham (names,price,luotxem,img,mota,iddanhmuc) values('$tensp','$giasp','$luotxem','$hinh','$mota','$iddm')";
                 pdo_execute($sql);
 }
 function delete_sanpham($id){
@@ -35,16 +35,16 @@ function loadall_sanpham_home(){
          $sp=pdo_query_one($sql);
         return $sp;
     }
-    function update_sanpham($id,$tensp,$giasp,$hinh,$mota){
+    function update_sanpham($id,$tensp,$giasp,$luotxem,$hinh,$mota){
         if($hinh!=""){      
-        $sql="update  sanpham set  names='".$tensp."',price='".$giasp."',img='".$hinh."',mota='".$mota."' where id=".$id;
+        $sql="update  sanpham set  names='".$tensp."',price='".$giasp."',luotxem='".$luotxem."',img='".$hinh."',mota='".$mota."' where id=".$id;
         }
-        else  $sql="update  sanpham set  names='".$tensp."',price='".$giasp."',mota='".$mota."' where id=".$id;
+        else  $sql="update  sanpham set  names='".$tensp."',price='".$giasp."',luotxem='".$luotxem."',mota='".$mota."' where id=".$id;
         pdo_execute($sql);
     }
-function validate_sanpham($iddm, $tensp, $giasp, $mota, $hinh) {
+function validate_sanpham($iddm, $tensp, $giasp, $mota, $hinh,$luotxem) {
     // Kiểm tra xem đã nhập đủ thông tin hay không
-    if (empty($iddm) || empty($tensp) || empty($giasp) || empty($mota) || empty($hinh)) {
+    if (empty($iddm) || empty($tensp) || empty($giasp) || empty($mota) || empty($hinh)||empty($luotxem)) {
         return 'Vui lòng điền đầy đủ thông tin.';
     }
 

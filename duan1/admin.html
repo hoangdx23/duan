@@ -2,64 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <link rel="stylesheet" href="css/bt1.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Multilevel Menu</title>
 </head>
 <body>
-    <!-- <div class="boxcenter">
-        <div class="row mb header">
-            <h1>ADMIN</h1>
-        </div>
-        <div class="row mb menu">
-            <ul>
-                <li><a href="admin.html">Trang chủ</a></li>
-                <li><a href="">Danh mục</a></li>
-                <li><a href="">Hàng hóa</a></li>
-                <li><a href="">Khách hàng</a></li>
-                <li><a href="">Bình luận</a></li>
-                <li><a href="">Thống kê</a></li>
-            </ul>
-        </div>
-        <div class="row">
-            <div class="row header"><H1>THÊM MỚI LỌAI HÀNG HÓA</H1>  </div>
-        </div>
-       <div class="row formconten">
-        <form action=""method="">
-            <div class="row mb">
-                Mã loại <br>
-            <input type="text"name="maloai" disabled>
-            </div>
-            <div class="row mb" >
-                Tên loại <br>
-            <input type="text"name="tenloai">
-            </div>
-            <div class="row">
-                <input type="submit" value="Nhập mới">
-                <input type="reset" value="Nhập lại">
-               <a href="danhsach.html"> <input type="button" value="Danh sách"></a>
-            </div>
-        </form>
-       </div>
-    </div> -->
-    <div className="sidebar1">
-        <div className="menu1">
-        <div className="menu-item1">
-                <a href="#"> 
-            <img className="img" src="https://theme.hstatic.net/1000306633/1000891824/14/logo.png?v=587" alt="" width="200px"/>
-            </a>
-            </div>
-            <div className="menu-item1">
-                <a href="#">DASHBOARD</a>
-            </div>
-            <div className="menu-item1">
-                <a href="#">SẢN PHẨM</a>
-            </div>
-            <div className="menu-item1">
-                <a href="#">NGƯỜI DÙNG</a>
-            </div>
-        </div>
-     </div>
+  <style>
+    body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    background-color: #333;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display: inline-block;
+    position: relative;
+}
+
+.menu a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu li:hover {
+    background-color: #555;
+}
+
+.submenu {
+    position: relative;
+}
+
+.submenu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.submenu:hover ul {
+    display: block;
+}
+
+.submenu ul li {
+    display: block;
+}
+
+  </style>
+    <nav class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li class="submenu">
+                <a href="#">Products</a>
+                <ul>
+                    <li><a href="#">Product 1</a></li>
+                    <li><a href="#">Product 2</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#">Services</a>
+                <ul>
+                    <li><a href="#">Service 1</a></li>
+                    <li><a href="#">Service 2</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
 </body>
 </html>
